@@ -24,12 +24,11 @@ const server = http.createServer((req, res) => {
             const friend = data.toString() // get buffer from client, convert to string first
             console.log('data in request:', friend);
             friends.push(JSON.parse(friend)) // convert to json
-        })
-        // res.statusCode = 201
-        // res.end('created successfully')
+        });
+        req.pipe(res);
     }
 
-    if (req.method === 'GET' && items[1] === 'friends') {
+    else if (req.method === 'GET' && items[1] === 'friends') {
         res.statusCode = 200
         res.setHeader('Content-Type', 'application/json')
         if (items.length === 3) {
