@@ -14,12 +14,16 @@ const server = http.createServer((req, res) => {
             age: 30
         }))
     } else if (req.url === '/messages') {
+        res.setHeader('Content-Type', 'text/html')
         res.write('<html>')
         res.write('<body>')
         res.write('<h1> hihi </h1>')
         res.write('</body>')
         res.write('</html>')
         res.end()
+    } else {
+        res.statusCode = 404
+        res.end("page not found")
     }
 })
 
