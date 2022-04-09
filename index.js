@@ -4,9 +4,11 @@ const PORT = 3000
 
 const server = http.createServer((req, res) => {
     if (req.url === '/friends') {
-        res.writeHead(200, {
-            'Content-Type': 'application/json'
-        })
+        // res.writeHead(200, {
+        //     'Content-Type': 'application/json'
+        // })
+        res.statusCode = 200
+        res.setHeader('Content-Type', 'application/json')
         res.end(JSON.stringify({
             name: 'mike',
             age: 30
