@@ -1,14 +1,19 @@
 const http = require('http')
 
+const PORT = 3000
+
 const server = http.createServer((req, res) => {
     res.writeHead(200, {
-        'Content-Type': 'text/plain'
+        'Content-Type': 'application/json'
     })
 
-    res.end('hello')
+    res.end(JSON.stringify({
+        name: 'mike',
+        age: 30
+    }))
 })
 
-server.listen(8080, () => {
-    console.log('server is listening on port 8080');
+server.listen(PORT, () => {
+    console.log(`server is listening on port ${PORT}`);
 })
 
